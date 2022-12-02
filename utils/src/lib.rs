@@ -8,7 +8,7 @@ pub fn read_input_file() -> String {
     let args: Vec<String> = env::args().collect();
 
     let file_path = {
-        if &args[1] == "demo" {
+        if args.len() > 1 && &args[1] == "demo" {
             DEMO_FILE_PATH
         } else {
             CHALLENGE_FILE_PATH
