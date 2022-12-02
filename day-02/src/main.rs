@@ -24,13 +24,14 @@ fn get_score_one(chars: (char, char)) -> i32 {
         'X' => 1,
         'Y' => 2,
         'Z' => 3,
-        _ => 0,
+        _ => panic!("Invalid shape score!"),
     };
 
     let match_score = match chars {
         ('A', 'Y') | ('B', 'Z') | ('C', 'X') => 6, // win
         ('A', 'X') | ('B', 'Y') | ('C', 'Z') => 3, // tie
-        _ => 0,                                    // loss
+        ('A', 'Z') | ('B', 'X') | ('C', 'Y') => 0, // loss
+        _ => panic!("Invalid match score!"),
     };
 
     shape_score + match_score
@@ -41,13 +42,14 @@ fn get_score_two(chars: (char, char)) -> i32 {
         ('A', 'Y') | ('B', 'X') | ('C', 'Z') => 1, // X
         ('A', 'Z') | ('B', 'Y') | ('C', 'X') => 2, // Y
         ('A', 'X') | ('B', 'Z') | ('C', 'Y') => 3, // Z
-        _ => 0,
+        _ => panic!("Invalid shape score!"),
     };
 
     let match_score = match chars.1 {
+        'X' => 0,
         'Y' => 3,
         'Z' => 6,
-        _ => 0,
+        _ => panic!("Invalid match score!"),
     };
 
     shape_score + match_score
